@@ -12,7 +12,7 @@ __Obehörig__ (personen inte finns i filen och sålunda aldrig har varit medlem)
 i hens fil).
 
 
-# Betygskriterier:
+## Betygskriterier:
 
 För att bli Godkänd (G) krävs att du hjälper både __receptionisten__ och __den personlige tränaren__ och
 uppfylla deras önskemål.</br>

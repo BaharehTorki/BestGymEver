@@ -38,4 +38,9 @@ public class Member implements Serializable {
     public void setRegistrationDate(LocalDate registrationDate) {
         this.registrationDate = registrationDate;
     }
+
+    @Override
+    public String toString() {
+        return name + "  |  " + personalNumber + "  |  " + registrationDate;
+    }
 }
