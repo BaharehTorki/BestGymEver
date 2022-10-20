@@ -24,8 +24,4 @@ class ReadTextFileServiceTest {
         assertEquals(LocalDate.of(2019,12,22),lines.get(12).getRegistrationDate());
     }
 
-    @Test
-    void should_write_in_file() {
-
-    }
 }

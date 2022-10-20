@@ -82,6 +82,4 @@ class ListsUtilsTest {
         assertEquals(MembershipType.INVALID, actual_1);
         assertEquals(MembershipType.INVALID, actual_2);
     }
-
-
 }

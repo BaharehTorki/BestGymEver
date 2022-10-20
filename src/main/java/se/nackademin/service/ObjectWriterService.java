@@ -13,6 +13,4 @@ public class ObjectWriterService {
             System.out.println("Error initializing stream");
         }
     }
-
-
 }
