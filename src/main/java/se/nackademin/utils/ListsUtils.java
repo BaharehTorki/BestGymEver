@@ -21,6 +21,33 @@ public class ListsUtils {
         return getMembershipTypeByName(members, input);
     }
 
+    public static Member getMember(List<Member> members, String input) throws SeveralNameExistException {
+        if (StringUtils.isNullOrEmpty(input))
+            return null;
+
+        if (StringUtils.isSsn(input))
+            return getMemberBySsn(members, input);
+
+        return getMemberByName(members, input);
+    }
+
+    private static Member getMemberByName(List<Member> members, String input) {
+        for (Member member : members) {
+            if (member.getName().equalsIgnoreCase(input))
+                return member;
+        }
+        return null;
+
+    }
+
+    private static Member getMemberBySsn(List<Member> members, String input) {
+        for (Member member : members) {
+            if (member.getPersonalNumber().equalsIgnoreCase(input))
+                return member;
+        }
+        return null;
+    }
+
     private static MembershipType getMembershipTypeByName(List<Member> members, String name) throws SeveralNameExistException {
         int count = 0;
         for (Member m : members) {

@@ -41,6 +41,6 @@ public class Member implements Serializable {
 
     @Override
     public String toString() {
-        return name + "  |  " + personalNumber + "  |  " + registrationDate;
+        return String.format(" %15s  %15s  %15s" ,name, personalNumber , registrationDate);
     }
 }
