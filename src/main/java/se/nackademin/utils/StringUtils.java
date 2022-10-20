@@ -5,7 +5,7 @@ import java.util.List;
 
 import static java.lang.Long.parseLong;
 
-public class Strings {
+public class StringUtils {
 
     public static boolean isNullOrEmpty(String string) {
         return string == null || string.isEmpty();
@@ -29,7 +29,7 @@ public class Strings {
         return output;
     }
     public static boolean isName(String string){
-        if (Strings.isNullOrEmpty(string))
+        if (StringUtils.isNullOrEmpty(string))
             return false;
         try {
             parseLong(string);
@@ -39,7 +39,7 @@ public class Strings {
         }
     }
     public static boolean isSsn(String string){
-        if (Strings.isNullOrEmpty(string))
+        if (StringUtils.isNullOrEmpty(string))
             return false;
         try {
             parseLong(string);

@@ -1,7 +1,7 @@
-package se.nackademin.utils;
+package se.nackademin.service;
 
 import se.nackademin.model.Member;
-import se.nackademin.model.MembershipType;
+import se.nackademin.utils.StringUtils;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
@@ -11,17 +11,16 @@ import java.nio.file.Path;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.function.Supplier;
 
 import static java.lang.Integer.parseInt;
 
-public class ReadTextFile {
+public class ReadTextFileService {
 
     public static List<Member> convertCustomerFileToMemberList(Path filePath) {
         List<Member> members = new ArrayList<>();
         try (BufferedReader br = Files.newBufferedReader(filePath)) {
             String firstLine, secondLine;
-            while (!Strings.isNullOrEmpty(firstLine = br.readLine())) {
+            while (!StringUtils.isNullOrEmpty(firstLine = br.readLine())) {
                 secondLine = br.readLine();
                 members.add(createMember(firstLine, secondLine));
             }
@@ -36,10 +35,10 @@ public class ReadTextFile {
     }
 
     private static Member createMember(String firstLine, String secondLine) {
-        if (Strings.isNullOrEmpty(firstLine, secondLine)) {
+        if (StringUtils.isNullOrEmpty(firstLine, secondLine)) {
             return null;
         }
-        List<String> nameAndSsn = Strings.splitNameAndPersonalNumber(firstLine);
+        List<String> nameAndSsn = StringUtils.splitNameAndPersonalNumber(firstLine);
         return new Member(nameAndSsn.get(0), nameAndSsn.get(1), LocalDate.parse(secondLine.trim()));
     }
 
