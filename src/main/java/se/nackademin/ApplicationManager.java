@@ -40,7 +40,7 @@ public class ApplicationManager {
             }
             try {
                 MembershipType type = ListsUtils.getMembershipType(members, input);
-                System.out.println("Your registration is: " + type);
+                System.out.println("Hi, " + input + " Your registration is: " + type);
                 if (MembershipType.ACTIVE.equals(type)) {
                     Member member = ListsUtils.getMember(members, input);
                     member.setRegistrationDate(LocalDate.now());
