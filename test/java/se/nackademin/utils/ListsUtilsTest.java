@@ -30,7 +30,7 @@ class ListsUtilsTest {
         memberList.add(new Member("Jicky Juul", "9902149834", LocalDate.now().minusWeeks(58)));
         memberList.add(new Member("Kadine Karlsson", "4604151234", LocalDate.now().minusWeeks(60)));
         memberList.add(new Member("Ali Sam", "4604151234", LocalDate.now().minusMonths(62)));
-        memberList.add(new Member("Jicky Juul", "9902149834", LocalDate.now().minusWeeks(69)));
+        memberList.add(new Member("Jicky Juuli", "9902149834", LocalDate.now().minusWeeks(69)));
 
         return memberList;
     }
