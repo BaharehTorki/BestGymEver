@@ -30,7 +30,7 @@ public class ApplicationManager {
             String input = JOptionPane.showInputDialog(null, "Input name/personal number.\nClick on cancel for exit. ");
             if (input == null) {
                 System.out.println("The coach file content is:");
-                for (Member m : ObjectReaderService.convertSerFileToList(COACH_FILE_PATH)) {
+                for (Member m : ObjectReaderService.readSerFileAndPutToList(COACH_FILE_PATH)) {
                     System.out.println(m);
                 }
                 fos.close();
@@ -45,7 +45,7 @@ public class ApplicationManager {
                 if (MembershipType.ACTIVE.equals(type)) {
                     Member m = MemberListsService.getMember(members, input);
                     Member member = new Member(m.getName(), m.getPersonalNumber(), LocalDate.now());
-                    ObjectWriterService.addNewMember(oos, member);
+                    ObjectWriterService.WriteNewMember(oos, member);
                 }
             } catch (SeveralNameExistException e) {
                 System.out.println(e.getMessage());
