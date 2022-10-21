@@ -19,10 +19,10 @@ class ObjectReaderAndWriterServiceTest {
         FileOutputStream fos = new FileOutputStream(filePath);
         ObjectOutputStream oos = new ObjectOutputStream(fos);
 
-        ObjectWriterService.WriteNewMember(oos, new Member("1", "1", LocalDate.now()));
-        ObjectWriterService.WriteNewMember(oos, new Member("2", "2", LocalDate.now()));
-        ObjectWriterService.WriteNewMember(oos, new Member("3", "3", LocalDate.now()));
-        ObjectWriterService.WriteNewMember(oos, new Member("4", "4", LocalDate.now()));
+        ObjectWriterService.writeNewMember(oos, new Member("1", "1", LocalDate.now()));
+        ObjectWriterService.writeNewMember(oos, new Member("2", "2", LocalDate.now()));
+        ObjectWriterService.writeNewMember(oos, new Member("3", "3", LocalDate.now()));
+        ObjectWriterService.writeNewMember(oos, new Member("4", "4", LocalDate.now()));
 
         List<Member> actual = ObjectReaderService.readSerFileAndPutToList(filePath);
 

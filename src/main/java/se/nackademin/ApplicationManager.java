@@ -45,7 +45,7 @@ public class ApplicationManager {
                 if (MembershipType.ACTIVE.equals(type)) {
                     Member m = MemberListsService.getMember(members, input);
                     Member member = new Member(m.getName(), m.getPersonalNumber(), LocalDate.now());
-                    ObjectWriterService.WriteNewMember(oos, member);
+                    ObjectWriterService.writeNewMember(oos, member);
                 }
             } catch (SeveralNameExistException e) {
                 System.out.println(e.getMessage());

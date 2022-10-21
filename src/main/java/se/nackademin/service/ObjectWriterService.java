@@ -6,7 +6,7 @@ import java.io.*;
 
 public class ObjectWriterService {
 
-    public static void WriteNewMember(ObjectOutputStream oos, Member member) {
+    public static void writeNewMember(ObjectOutputStream oos, Member member) {
         try {
             oos.writeObject(member);
         } catch (IOException ex) {
