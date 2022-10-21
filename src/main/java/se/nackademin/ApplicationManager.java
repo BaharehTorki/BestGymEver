@@ -6,7 +6,7 @@ import se.nackademin.model.MembershipType;
 import se.nackademin.service.ObjectReaderService;
 import se.nackademin.service.ObjectWriterService;
 import se.nackademin.service.ReadTextFileService;
-import se.nackademin.utils.ListsUtils;
+import se.nackademin.service.MemberListsService;
 
 import javax.swing.*;
 import java.io.FileOutputStream;
@@ -31,7 +31,7 @@ public class ApplicationManager {
             String input = JOptionPane.showInputDialog(null, "Input name/personal number:");
             if (input == null) {
                 System.out.println("The coach file content is:");
-                for (Member m: ObjectReaderService.convertSerFileToList(COACH_FILE_PATH)) {
+                for (Member m : ObjectReaderService.convertSerFileToList(COACH_FILE_PATH)) {
                     System.out.println(m);
                 }
                 fos.close();
@@ -39,11 +39,13 @@ public class ApplicationManager {
                 break;
             }
             try {
-                MembershipType type = ListsUtils.getMembershipType(members, input);
+                //for reception
+                MembershipType type = MemberListsService.showMembershipStatus(members, input);
                 System.out.println("Hi, " + input + " Your registration is: " + type);
+                //for trainer
                 if (MembershipType.ACTIVE.equals(type)) {
-                    Member member = ListsUtils.getMember(members, input);
-                    member.setRegistrationDate(LocalDate.now());
+                    Member m = MemberListsService.getMember(members, input);
+                    Member member = new Member(m.getName(), m.getPersonalNumber(), LocalDate.now());
                     ObjectWriterService.addNewMember(oos, member);
                 }
             } catch (SeveralNameExistException e) {
