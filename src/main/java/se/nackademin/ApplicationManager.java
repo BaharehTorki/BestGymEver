@@ -26,9 +26,8 @@ public class ApplicationManager {
 
         FileOutputStream fos = new FileOutputStream(COACH_FILE_PATH);
         ObjectOutputStream oos = new ObjectOutputStream(fos);
-        System.out.println("Please click on cancel if you want to Exit!");
         while (true) {
-            String input = JOptionPane.showInputDialog(null, "Input name/personal number:");
+            String input = JOptionPane.showInputDialog(null, "Input name/personal number.\nClick on cancel for exit. ");
             if (input == null) {
                 System.out.println("The coach file content is:");
                 for (Member m : ObjectReaderService.convertSerFileToList(COACH_FILE_PATH)) {
