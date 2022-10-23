@@ -7,6 +7,7 @@ import se.nackademin.service.ObjectReaderService;
 import se.nackademin.service.ObjectWriterService;
 import se.nackademin.service.ReadTextFileService;
 import se.nackademin.service.MemberListsService;
+import se.nackademin.utils.StringUtils;
 
 import javax.swing.*;
 import java.io.FileOutputStream;
@@ -28,6 +29,7 @@ public class ApplicationManager {
         ObjectOutputStream oos = new ObjectOutputStream(fos);
         while (true) {
             String input = JOptionPane.showInputDialog(null, "Input name/personal number.\nClick on cancel for exit. ");
+
             if (input == null) {
                 System.out.println("The coach file content is:");
                 for (Member m : ObjectReaderService.readSerFileAndPutToList(COACH_FILE_PATH)) {
@@ -38,6 +40,10 @@ public class ApplicationManager {
                 break;
             }
             try {
+                if (!StringUtils.verifyName(input)){
+                    System.out.println(input + " is not verified");
+                    continue;
+                }
                 //for reception
                 MembershipType type = MemberListsService.showMembershipStatus(members, input);
                 System.out.println("Hi, " + input + " Your registration is: " + type);

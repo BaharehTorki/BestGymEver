@@ -28,25 +28,51 @@ public class StringUtils {
         output.add(split[0].trim());
         return output;
     }
-    public static boolean isName(String string){
+
+    public static boolean isName(String string) {
         if (StringUtils.isNullOrEmpty(string))
             return false;
         try {
             parseLong(string);
             return false;
-        }catch (Exception e){
+        } catch (Exception e) {
             return true;
         }
     }
-    public static boolean isSsn(String string){
+
+    public static boolean isSsn(String string) {
         if (StringUtils.isNullOrEmpty(string))
             return false;
         try {
             parseLong(string);
             return true;
-        }catch (Exception e){
+        } catch (Exception e) {
             return false;
         }
     }
 
+    public static boolean verifyName(String input) {
+        //s[0]  s[1]     s[2]
+        //Ali  reza     ghasemi
+        String[] s = input.split(" ");
+        for (String name : s) {
+            if (!isAllLetters(name)) {
+                return false;
+            }
+        }
+        return (s.length > 1);
+    }
+
+    private static boolean isAllLetters(String s) {
+        //s = re,za
+        //chars = ['r' , 'e' , ',' , 'z' , 'a']
+        char[] chars = s.toCharArray();
+        for (char c : chars) {
+             if (!Character.isLetter(c)){
+                 return false;
+             }
+        }
+        return true;
+    }
 }
+

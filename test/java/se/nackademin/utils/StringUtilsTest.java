@@ -60,4 +60,28 @@ class StringUtilsTest {
         boolean actual = StringUtils.isSsn("8501151234aa");
         assertFalse(actual);
     }
+
+    @Test
+    void should_return_true_if_the_string_is_two_or_more_parts() {
+        boolean actual = StringUtils.verifyName("Bahareh Torki");
+        boolean actual1 = StringUtils.verifyName("Bahar");
+        boolean actual2 = StringUtils.verifyName("Ali   reza    Ghasemi");
+
+        assertTrue(actual);
+        assertFalse(actual1);
+        assertTrue(actual2);
+    }
+
+    @Test
+    void should_return_true_if_name_include_only_alephbatic_character() {
+        boolean actual = StringUtils.verifyName("Bahareh1 Torki");
+        boolean actual1 = StringUtils.verifyName("Bahareh Tork1");
+        boolean actual2 = StringUtils.verifyName("Ali,   reza    Ghasemi");
+        boolean actual3 = StringUtils.verifyName("Ali   reza    Ghasemi    ");
+
+        assertFalse(actual);
+        assertFalse(actual1);
+        assertFalse(actual2);
+        assertTrue(actual3);
+    }
 }
