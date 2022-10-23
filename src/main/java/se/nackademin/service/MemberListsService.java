@@ -6,7 +6,9 @@ import se.nackademin.model.MembershipType;
 import se.nackademin.utils.StringUtils;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class MemberListsService {
 
@@ -55,4 +57,83 @@ public class MemberListsService {
         }
         return null;
     }
+
+//____________________________________________________________________________________________
+
+    private static void getMemberByCorrectPersonalNumber(List<Member> members, String input) {
+        if (StringUtils.isNullOrEmpty(input)) {
+            System.out.println("input is null");
+        }
+    }
+
+    private static boolean lengthOfPersonalNumber(List<Member> members, String input) {
+        input.trim();
+        if (input.length() == 12) {
+            boolean a = input.startsWith("19") || input.startsWith("20");
+            System.out.println(input);
+            return true;
+        }
+        if (input.length() == 10) {
+            if (input.startsWith("0")) {
+                System.out.println("Your input is not correct");
+                return false;
+            } else {
+                System.out.println(input);
+            }
+        }
+        return true;
+    }
+
+    private static boolean differentTypeOfPersonalNumberScript(List<Member> members, String input) {
+        input.trim();
+        if (input.contains("-") || (input.contains("_"))) {
+            return true;
+        }
+        return true;
+    }
+
+    private static boolean firstNameAndLAstName(List<Member> members, String input) {
+        if (input.contains(" ")) {
+            return true;
+        } else
+            return false;
+    }
+
+    private static boolean stringAndNumber(String input) {
+        try{
+            System.out.println("please enter your name");
+            Scanner scan = new Scanner(System.in);
+            String s = scan.nextLine();
+            s.trim();
+
+            if (s.contains("123456789abcdefghijklmnopqrstuvwxyz")){
+                System.out.println("You have typed combination of letters and numbers");
+                return false;
+            }
+        }catch (NumberFormatException ex){
+            ex.printStackTrace();
+        }
+        return false;
+    }
+
+    private static boolean stringAndNumber1(List<Member> members, String input) {
+        String s1 = "123456789abcdefghijklmnopqrstuvwxyz";
+        //String s2 = "abcdefghijklmnopqrstuvwxyz";
+        //boolean isNumber = Character.isDigit(input.charAt(i));
+
+        if (input.contains(s1)) {
+            try {
+                System.out.println("Please write just by number or letters");
+                Scanner scan = new Scanner(System.in);
+                String input1 = scan.nextLine();
+                //int number = Integer.parseInt(s1);
+
+            } catch (NumberFormatException ex) {
+                ex.printStackTrace();
+                System.out.println("You have typed combination of letters and numbers");
+            }
+        }
+        return false;
+    }
 }
+

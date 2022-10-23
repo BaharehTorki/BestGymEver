@@ -77,7 +77,7 @@ class MemberListsServiceTest {
     @Test
     void should_return_MembershipType_INVALID_if_name_or_personal_number_is_not_exist() throws SeveralNameExistException {
         MembershipType actual_1 = MemberListsService.showMembershipStatus(memberList, "8501175465");
-        MembershipType actual_2 = MemberListsService.showMembershipStatus(memberList, "Abas gholi");
+        MembershipType actual_2 = MemberListsService.showMembershipStatus(memberList, "Simon");
 
         assertEquals(MembershipType.INVALID, actual_1);
         assertEquals(MembershipType.INVALID, actual_2);

@@ -15,6 +15,7 @@ import java.io.ObjectOutputStream;
 import java.nio.file.Path;
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Scanner;
 
 public class ApplicationManager {
 
@@ -26,7 +27,8 @@ public class ApplicationManager {
 
         FileOutputStream fos = new FileOutputStream(COACH_FILE_PATH);
         ObjectOutputStream oos = new ObjectOutputStream(fos);
-        while (true) {
+
+       /* while (true) {
             String input = JOptionPane.showInputDialog(null, "Input name/personal number.\nClick on cancel for exit. ");
             if (input == null) {
                 System.out.println("The coach file content is:");
@@ -41,15 +43,32 @@ public class ApplicationManager {
                 //for reception
                 MembershipType type = MemberListsService.showMembershipStatus(members, input);
                 System.out.println("Hi, " + input + " Your registration is: " + type);
-                //for trainer
-                if (MembershipType.ACTIVE.equals(type)) {
-                    Member m = MemberListsService.getMember(members, input);
-                    Member member = new Member(m.getName(), m.getPersonalNumber(), LocalDate.now());
-                    ObjectWriterService.writeNewMember(oos, member);
-                }
-            } catch (SeveralNameExistException e) {
-                System.out.println(e.getMessage());
+*/
+
+        System.out.println("Input name/personal number. ");
+        Scanner scan = new Scanner(System.in);
+        String input = scan.nextLine();
+        if (input == null) {
+            System.out.println("The coach file content is:");
+            for (Member m : ObjectReaderService.readSerFileAndPutToList(COACH_FILE_PATH)) {
+                System.out.println(m);
             }
+            fos.close();
+            oos.close();
+        }
+        try {
+            //for reception
+            MembershipType type = MemberListsService.showMembershipStatus(members, input);//____________________
+            System.out.println("Hi, " + input + " Your registration is: " + type);
+
+            //for trainer
+            if (MembershipType.ACTIVE.equals(type)) {
+                Member m = MemberListsService.getMember(members, input);//____________________
+                Member member = new Member(m.getName(), m.getPersonalNumber(), LocalDate.now());//____________________
+                ObjectWriterService.writeNewMember(oos, member);//____________________
+            }
+        } catch (SeveralNameExistException e) {
+            System.out.println(e.getMessage());
         }
     }
 }

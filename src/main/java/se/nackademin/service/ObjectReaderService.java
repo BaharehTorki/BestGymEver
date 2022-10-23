@@ -10,8 +10,9 @@ public class ObjectReaderService {
 
     public static List<Member> readSerFileAndPutToList(String filePath) {
         List<Member> members = new ArrayList<>();
-        try (FileInputStream fis = new FileInputStream(filePath);
+        try (FileInputStream fis = new FileInputStream(filePath);//Att läsa in
              ObjectInputStream ois = new ObjectInputStream(fis)) {
+
             while (fis.available() != 0) {
                 Object o = ois.readObject();
                 if (o instanceof Member) {
